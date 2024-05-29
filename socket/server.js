@@ -6,5 +6,11 @@ const io = require("socket.io")(8800, {
   
   let activeUsers = [];
   
+  io.on("connection", (socket) => {
+    
   
+    
+  
+    
+  });
   
