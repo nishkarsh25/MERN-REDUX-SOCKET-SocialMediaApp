@@ -34,7 +34,7 @@ export const registerUser = async (req, res) => {
 
 // Changed
 export const loginUser = async (req, res) => {
-  
+  const { username, password } = req.body;
 
   
 };
