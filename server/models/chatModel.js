@@ -11,5 +11,5 @@ const ChatSchema = new mongoose.Schema(
   }
 );
 
-
+const ChatModel = mongoose.model("Chat", ChatSchema);
 
