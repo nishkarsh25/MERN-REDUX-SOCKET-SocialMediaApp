@@ -4,7 +4,7 @@ import authMiddleWare from '../middleware/AuthMiddleware.js';
 
 const router = express.Router()
 
-
+router.get('/:id', getUser);
 
 
 
