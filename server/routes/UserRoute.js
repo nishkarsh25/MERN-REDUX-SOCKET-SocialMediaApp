@@ -11,3 +11,4 @@ router.delete('/:id',authMiddleWare, deleteUser)
 router.put('/:id/follow',authMiddleWare, followUser)
 router.put('/:id/unfollow',authMiddleWare, unfollowUser)
 
+export default router
