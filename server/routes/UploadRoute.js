@@ -21,5 +21,5 @@ router.post("/", upload.single("file"), (req, res) => {
     }
   });
 
-
+export default router
 
