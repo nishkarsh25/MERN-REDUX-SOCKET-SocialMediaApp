@@ -56,6 +56,6 @@ export const loginUser = async (req, res) => {
       res.status(404).json("User not found");
     }
   } catch (err) {
-    
+    res.status(500).json(err);
   }
 };
