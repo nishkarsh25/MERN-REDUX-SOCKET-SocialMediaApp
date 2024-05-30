@@ -44,3 +44,5 @@ const uploadSlice = createSlice({
   }
 });
 
+export const { } = uploadSlice.actions; // No actions are defined in this slice
+export default uploadSlice.reducer;
