@@ -68,4 +68,4 @@ const messageSlice = createSlice({
   }
 });
 
-
+export default messageSlice.reducer;
