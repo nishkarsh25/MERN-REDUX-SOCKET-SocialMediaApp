@@ -34,6 +34,56 @@ export const logout = createAsyncThunk('auth/logout', async () => {
   localStorage.clear();
 });
 
-
+const authSlice = createSlice({
+  name: 'auth',
+  initialState: {
+    authData: null,
+    loading: false,
+    error: false,
+    updateLoading: false,
+  },
+  reducers: {
+    followUser: (state, action) => {
+      state.authData.user.following.push(action.payload);
+    },
+    unfollowUser: (state, action) => {
+      state.authData.user.following = state.authData.user.following.filter(
+        (id) => id !== action.payload
+      );
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(logIn.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(logIn.fulfilled, (state, action) => {
+        state.authData = action.payload;
+        state.loading = false;
+        localStorage.setItem('profile', JSON.stringify(action.payload));
+      })
+      .addCase(logIn.rejected, (state,action) => {
+        state.loading = false;
+        state.error = action.payload;// Accessing the error payload provided by rejectWithValue
+      })
+      .addCase(signUp.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(signUp.fulfilled, (state, action) => {
+        state.authData = action.payload;
+        state.loading = false;
+        localStorage.setItem('profile', JSON.stringify(action.payload));
+      })
+      .addCase(signUp.rejected, (state,action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.authData = null;
+      });
+  },
+});
 
 
