@@ -29,7 +29,15 @@ function loadFromLocalStorage() {
 
 const persistedState = loadFromLocalStorage();
 
-
+// Combine all reducers into a single rootReducer
+const rootReducer = combineReducers({
+    auth: authReducer,
+    chat: chatReducer,
+    posts: postReducer,
+    upload: uploadReducer,
+    user: userReducer,
+    messages: messageReducer
+});
 
 
 
