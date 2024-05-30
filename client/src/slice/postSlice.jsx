@@ -41,5 +41,63 @@ export const likePost = createAsyncThunk(
   }
 );
 
+// Slice for post-related state
+const postSlice = createSlice({
+  name: 'posts',
+  initialState: {
+    posts: null,
+    loading: false,
+    error: null,
+    uploading: false
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      // Reducer case for retrieving start
+      .addCase(getTimelinePosts.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      // Reducer case for successful retrieval
+      .addCase(getTimelinePosts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.posts = action.payload;
+      })
+      // Reducer case for failed retrieval
+      .addCase(getTimelinePosts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
 
+      // Reducer case for upload start
+      .addCase(uploadPost.pending, (state) => {
+        state.uploading = true;
+        state.error = null;
+      })
+      // Reducer case for successful upload
+      .addCase(uploadPost.fulfilled, (state, action) => {
+        state.uploading = false;
+      })
+      // Reducer case for failed upload
+      .addCase(uploadPost.rejected, (state, action) => {
+        state.uploading = false;
+        state.error = action.payload;
+      })
+
+      // Reducer case for upload start
+      .addCase(likePost.pending, (state) => {
+        state.uploading = true;
+        state.error = null;
+      })
+      // Reducer case for successful upload
+      .addCase(likePost.fulfilled, (state, action) => {
+        state.uploading = false;
+      })
+      // Reducer case for failed upload
+      .addCase(likePost.rejected, (state, action) => {
+        state.uploading = false;
+        state.error = action.payload;
+      });
+  }
+});
 
