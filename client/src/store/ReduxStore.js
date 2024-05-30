@@ -27,7 +27,7 @@ function loadFromLocalStorage() {
     }
 }
 
-
+const persistedState = loadFromLocalStorage();
 
 
 
