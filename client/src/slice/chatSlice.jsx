@@ -95,4 +95,4 @@ const chatSlice = createSlice({
   }
 });
 
-
+export default chatSlice.reducer;
