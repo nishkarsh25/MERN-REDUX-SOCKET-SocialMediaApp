@@ -17,7 +17,18 @@ export const logIn = createAsyncThunk(
   }
 );
 
-
+export const signUp = createAsyncThunk(
+  'auth/signUp',
+  async ({ formData, navigate }, { rejectWithValue }) => {
+    try {
+      const { data } = await AuthApi.signUp(formData);
+      navigate('/home', { replace: true });
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 
 
