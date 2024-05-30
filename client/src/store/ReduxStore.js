@@ -49,4 +49,4 @@ const store = configureStore({
 // Subscribe to store changes to persist state to local storage
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
-
+export default store;
