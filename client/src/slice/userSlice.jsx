@@ -41,7 +41,18 @@ export const unfollowUser = createAsyncThunk(
   }
 );
 
-
+// Async thunk for fetching user data
+export const fetchUser = createAsyncThunk(
+  'user/fetchUser',
+  async (userId, { rejectWithValue }) => {
+    try {
+      const response = await UserApi.getUser(userId);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 
 
