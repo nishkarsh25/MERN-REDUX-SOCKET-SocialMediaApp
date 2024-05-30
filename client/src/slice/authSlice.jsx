@@ -86,4 +86,5 @@ const authSlice = createSlice({
   },
 });
 
-
+export const { followUser, unfollowUser } = authSlice.actions;
+export default authSlice.reducer;
