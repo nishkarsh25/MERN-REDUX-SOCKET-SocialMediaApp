@@ -46,6 +46,7 @@ const store = configureStore({
     devTools: process.env.NODE_ENV !== 'production',
 });
 
-
+// Subscribe to store changes to persist state to local storage
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 
