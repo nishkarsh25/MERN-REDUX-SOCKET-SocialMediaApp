@@ -23,13 +23,13 @@ const ProfileCard = ({location}) => {
     <div className="ProfileCard">
       <div className="ProfileImages">
         <img src={
-            userData.coverPicture
+            userData&&userData.coverPicture
               ? serverPublic + userData.coverPicture
               : serverPublic + "defaultCover.jpg"
           } alt="CoverImage" />
         <img
           src={
-            user.profilePicture
+            userData&&userData.profilePicture
               ? serverPublic + userData.profilePicture
               : serverPublic + "defaultProfile.png"
           }
