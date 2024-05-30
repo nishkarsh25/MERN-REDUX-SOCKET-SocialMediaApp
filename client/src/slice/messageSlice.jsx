@@ -28,6 +28,44 @@ export const addMessage = createAsyncThunk(
   }
 );
 
+// Slice for message-related state
+const messageSlice = createSlice({
+  name: 'messages',
+  initialState: {
+    messages: [],
+    loading: false,
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      // Reducer case for getting messages
+      .addCase(getMessages.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getMessages.fulfilled, (state, action) => {
+        state.loading = false;
+        state.messages = action.payload;
+      })
+      .addCase(getMessages.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
 
+      // Reducer case for adding a message
+      .addCase(addMessage.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(addMessage.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(addMessage.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+  }
+});
 
 
