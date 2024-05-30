@@ -113,4 +113,5 @@ const userSlice = createSlice({
   },
 });
 
-
+// Export actions and reducer
+export default userSlice.reducer;
