@@ -11,7 +11,7 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
-
+export const getTimelinePosts = (id) => API.get(`/posts/${id}/timeline`);
 
 
 
