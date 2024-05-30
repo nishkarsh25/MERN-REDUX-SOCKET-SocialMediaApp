@@ -10,7 +10,7 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-
+export const getUser = (userId) => API.get(`/user/${userId}`);
 
 
 
