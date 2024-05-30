@@ -101,3 +101,5 @@ const postSlice = createSlice({
   }
 });
 
+export const { } = postSlice.actions; // No actions are defined in this slice
+export default postSlice.reducer;
