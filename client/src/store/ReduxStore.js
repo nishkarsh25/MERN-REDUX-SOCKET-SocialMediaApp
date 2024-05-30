@@ -42,7 +42,7 @@ const rootReducer = combineReducers({
 // Configure the Redux store
 const store = configureStore({
     reducer: rootReducer,
-    // preloadedState: persistedState,
+    preloadedState: persistedState,
     devTools: process.env.NODE_ENV !== 'production',
 });
 
