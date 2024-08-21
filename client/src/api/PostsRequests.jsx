@@ -1,24 +1,26 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+const API = axios.create({
+  baseURL: "https://mern-redux-socket-socialmediaapp.onrender.com",
+});
 
 API.interceptors.request.use((req) => {
-    const token = JSON.parse(localStorage.getItem('profile'))?.token;
-    if (token) {
-        req.headers.Authorization = token; // Pass the token without the "Bearer" prefix
-    }
+  const token = JSON.parse(localStorage.getItem("profile"))?.token;
+  if (token) {
+    req.headers.Authorization = token; // Pass the token without the "Bearer" prefix
+  }
 
-    return req;
+  return req;
 });
 
 export const getTimelinePosts = (id) => API.get(`/posts/${id}/timeline`);
-export const likePost = (id, userId) => API.put(`posts/${id}/like`, { userId: userId });
+export const likePost = (id, userId) =>
+  API.put(`posts/${id}/like`, { userId: userId });
 export const uploadPost = (data) => API.post("/posts", data);
-
 
 // import axios from 'axios';
 
-// const API = axios.create({ baseURL: 'http://localhost:5000' });
+// const API = axios.create({ baseURL: 'https://mern-redux-socket-socialmediaapp.onrender.com' });
 
 // // Function to retrieve token from local storage
 // const getToken = () => {
